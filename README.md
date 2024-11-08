@@ -1,2 +1,2 @@
 # donations
-donation ebsite
+donation website
