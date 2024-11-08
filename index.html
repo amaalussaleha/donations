@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futuristic Donation Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif; /* Use a futuristic font */
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #f0f0f0;
+    }
+
+    header {
+      background: linear-gradient(135deg, #00d4ff, #5500ff);
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #f0f0f0;
+      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      filter: drop-shadow(0 0 10px #00d4ff);
+    }
+
+    header nav a {
+      color: #f0f0f0;
+      margin: 0 10px;
+      font-size: 1.5em;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover {
+      color: #00d4ff;
+      text-shadow: 0 0 10px #00d4ff;
+    }
+
+    .main-image {
+      background-image: url('cover.jfif');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 2.5em;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 0 0 10px #00d4ff;
+    }
+
+    .donation-section {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+      background: rgba(20, 20, 20, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(85, 0, 255, 0.3);
+    }
+
+    .donate-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #00d4ff, #5500ff);
+      color: white;
+      font-size: 1.2em;
+      text-decoration: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.5);
+    }
+
+    .donate-button:hover {
+      background: linear-gradient(135deg, #5500ff, #00d4ff);
+      transform: scale(1.05);
+    }
+
+    .qr-container {
+      display: none;
+      justify-content: center;
+      gap: 30px;
+      margin: 20px 0;
+    }
+
+    .qr-code img {
+      width: 200px;
+      height: 200px;
+      border: 2px solid #00d4ff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00d4ff;
+    }
+
+    /* Image Gallery */
+    .gallery {
+      max-width: 1000px;
+      margin: 20px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 0 10px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 212, 255, 0.3);
+    }
+
+    .gallery-item {
+      flex: 1 1 calc(33.33% - 15px);
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(85, 0, 255, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .gallery-item {
+        flex: 1 1 calc(50% - 15px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-item {
+        flex: 1 1 100%;
+      }
+    }
+
+    footer {
+      background: linear-gradient(135deg, #5500ff, #00d4ff);
+      color: #f0f0f0;
+      text-align: center;
+      padding: 15px 0;
+      box-shadow: 0 -4px 20px rgba(0, 212, 255, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <img src="logo.jfif" alt="Logo" class="logo" />
+      <div>AMAAL US SALEHA</div>
+    </div>
+    <nav>
+      <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/yourpage" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com/yourpage" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://wa.me/yourwhatsapplink" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </nav>
+  </header>
+
+  <div class="main-image">
+    <p>“Those who spend in charity will be richly rewarded.” (Quran 75:10)</p>
+  </div>
+
+  <div class="donation-section">
+    <h2>Donate via EasyPaisa</h2>
+    <button class="donate-button" onclick="showQRCode()">Donate</button>
+    <div class="qr-container" id="qrContainer">
+      <div class="qr-code">
+        <img src="qr2.jfif" alt="QR Code 1">
+        <p>Scan to donate</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Gallery Section -->
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="pic1.jfif" alt="Gallery Image 1">
+    </div>
+    <div class="gallery-item">
+      <img src="pic2.jfif" alt="Gallery Image 2">
+    </div>
+    <div class="gallery-item">
+      <img src="pic3.jfif" alt="Gallery Image 3">
+    </div>
+    <div class="gallery-item">
+      <img src="pic4.jfif" alt="Gallery Image 4">
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>Location: Orphanage Islamabad Tehsil, Soan Gardens, Block H, 20 Street, 16</p>
+      <p>&copy; 2024 AMAAL US SALEHA. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function showQRCode() {
+      const qrContainer = document.getElementById('qrContainer');
+      qrContainer.style.display = qrContainer.style.display === 'flex' ? 'none' : 'flex';
+    }
+  </script>
+
+</body>
+</html>
